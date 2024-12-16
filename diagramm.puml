@@ -1,0 +1,93 @@
+@startuml
+abstract class com.example.prototype.Shape {
+# Color color
+# Color borderColor
+# double lineWidth
+# double x
+# double y
++ {abstract}void draw(GraphicsContext,double,double)
++ {abstract}String toString()
++ void setColor(Color)
++ void setBorderColor(Color)
++ void setLineWidth(double)
++ void setXY(double,double)
++ Object clone()
+}
+
+
+class com.example.prototype.Rectangle {
+- double width
+- double height
++ void draw(GraphicsContext,double,double)
++ String toString()
+}
+
+
+class com.example.prototype.Polygon {
+- double size
+- int numberOfSides
++ void draw(GraphicsContext,double,double)
++ String toString()
+}
+
+
+class com.example.prototype.Triangle {
+- double size
++ void draw(GraphicsContext,double,double)
++ String toString()
+}
+
+
+class com.example.prototype.Ellipse {
+- double radiusX
+- double radiusY
++ void draw(GraphicsContext,double,double)
++ String toString()
+}
+
+
+class com.example.prototype.Main {
++ void start(Stage)
++ {static} void main(String[])
+}
+
+class com.example.prototype.Controller {
+- ListView<Shape> listView
+- ColorPicker colorPicker
+- ColorPicker borderColorPicker
+- TextField lineWidthField
+- Label shapeNameLabel
+- Canvas canvas
+- ObservableList<Shape> content
++ void initialize(URL,ResourceBundle)
++ void drawShape(MouseEvent)
++ void clearCanvas()
+}
+
+
+class com.example.prototype.Circle {
+- double radius
++ void draw(GraphicsContext,double,double)
++ String toString()
+}
+
+
+class com.example.prototype.Square {
+- double size
++ void draw(GraphicsContext,double,double)
++ String toString()
+}
+
+
+
+
+com.example.prototype.Cloneable <|.. com.example.prototype.Shape
+com.example.prototype.Shape <|-- com.example.prototype.Rectangle
+com.example.prototype.Shape <|-- com.example.prototype.Polygon
+com.example.prototype.Shape <|-- com.example.prototype.Triangle
+com.example.prototype.Shape <|-- com.example.prototype.Ellipse
+javafx.application.Application <|-- com.example.prototype.Main
+javafx.fxml.Initializable <|.. com.example.prototype.Controller
+com.example.prototype.Shape <|-- com.example.prototype.Circle
+com.example.prototype.Shape <|-- com.example.prototype.Square
+@enduml
